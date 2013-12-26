@@ -5,5 +5,5 @@ require File.expand_path('../application', __FILE__)
 InatLite::Application.initialize!
 
 #Switched to Forman
-#APP_CONFIG = YAML.load_file("#{Rails.root}/config/config.yml")
+ENV = YAML.load_file("#{Rails.root}/config/config.yml")
 
