@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    client = OAuth2::Client.new(APP_CONFIG['app_id'], APP_CONFIG['app_secret'], :site => APP_CONFIG['site'])
+    client = OAuth2::Client.new(ENV['APP_ID'], ENV['APP_SECRET'], :site => ENV['SITE'])
     begin
       token = client.password.get_token(params[:session][:login], params[:session][:password]).token
       user, key = user_and_key_for_token token

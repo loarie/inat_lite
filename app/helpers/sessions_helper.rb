@@ -30,7 +30,7 @@ module SessionsHelper
   
   def user_and_key_for_token(token)
     headers = {"Authorization" => "Bearer #{token}"}
-    response = RestClient.get("#{APP_CONFIG['site']}/users/edit.json", headers)
+    response = RestClient.get("#{ENV['SITE']}/users/edit.json", headers)
     user_id = JSON.parse(response)['id']
     user = User.find(user_id)
     if key = Key.where(:token => token).first
