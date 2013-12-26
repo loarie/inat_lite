@@ -22,9 +22,11 @@ class UsersController < ApplicationController
     if @errors.any?
       render 'new'
     else
+      client = OAuth2::Client.new(APP_CONFIG['app_id'], APP_CONFIG['app_secret'], :site => APP_CONFIG['site'])
+      token = client.password.get_token(params[:user][:login], params[:user][:password]).token
+      @user, key = user_and_key_for_token(token)
       flash[:success] = "Welcome to iNaturalist!"
       redirect_to @user
     end
   end
 end
-
