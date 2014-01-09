@@ -1,0 +1,33 @@
+<% provide(:title, @observation.species_guess) %>
+<ul>
+  <li><%= @observation.iconic_taxon_name %></li>
+  <li><%= @observation.species_guess %></li>
+  <li>
+    <img src="<%= @observation.observation_photos[0].photo.medium_url %>" />
+    Todo: Make fullscreen
+  </li>
+  <li> Todo: Favorite, Flag, FB, Twitter </li>
+  <li> Todo: Comments and IDs </li>
+</ul>
+<ul>
+  <li>Todo: Edit this spotting</li>
+  <li>
+    Observed by 
+    <%= link_to @user.login, @user %>
+    <%= link_to image_tag(@user.user_icon_url, alt: @user.login), @user %>
+  </li>
+  <li>Todo: Map</li>
+  <li>
+    <span class="timestamp">
+      Observed <%= time_ago_in_words(@observation.observed_on) %> ago.
+    </span>
+  </li>
+  <li>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(@observation.created_at) %> ago.
+    </span>
+  </li>
+  <li>Todo: Related Observations - same species</li>
+  <li>Todo: Nearby Observations - same location</li>
+  <li>Todo: Favorites</li>
+</ul>
