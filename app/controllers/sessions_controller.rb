@@ -9,9 +9,8 @@ class SessionsController < ApplicationController
       token = client.password.get_token(params[:session][:login], params[:session][:password]).token
       user, key = user_and_key_for_token token
       sign_in key
-      
       flash[:success] = "Welcome back #{user.login}!"
-      redirect_to user
+      redirect_back_or user
     rescue OAuth2::Error => e
       flash.now[:error] = 'Invalid email/password combination'
       render 'new'

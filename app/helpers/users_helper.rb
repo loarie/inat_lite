@@ -6,6 +6,6 @@ module UsersHelper
     else
       url = user.medium_user_icon_url
     end
-    image_tag(url, alt: user.name, class: "profile_pic")
+    image_tag(url, alt: user.name, class: "img-thumbnail")
   end
 end

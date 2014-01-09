@@ -2,10 +2,33 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <h1>
-        <%= profile_pic_for @user %>
-        <%= @user.login %>
-      </h1>
+      <%= profile_pic_for @user %>
+    </section>
+    <section>
+      <ul>
+        <li><%= @user.login %></li>
+        <li>Location</li>
+        <li>Website</li>
+        <li>#########</li>
+        <li><%= @user.observations_count %> observations</li>
+        <li>projects</li>
+        <li>comments</li>
+        <li>identifications</li>
+        <li>favorites</li>
+        <li>#### <%= @user.login %>'s friends</li>
+        <li>following</li>
+        <li>followers</li>
+        <li>#### <%= @user.login %>'s patches</li>
+      </ul>
     </section>
   </aside>
+  <div class="span8">
+    <% if @user.observations_count > 0 %>
+      <h3>Observations (<%= @user.observations_count  %>)</h3>
+      #Todo: filters: search, iconic taxon, continent, all, identified, unidentified, order: recent
+      <ul class="observations">
+        <%= render @observations %>
+      </ul>
+    <% end %>
+  </div>
 </div>
